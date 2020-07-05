@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Android MVP Example</string>
+    <string name="dialog_new_memo">New memo</string>
+    <string name="dialog_add_title">Write title.</string>
+    <string name="dialog_add_text">Write text.</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_add">Add</string>
+</resources>
