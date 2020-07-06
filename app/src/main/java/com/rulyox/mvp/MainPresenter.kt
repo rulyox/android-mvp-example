@@ -1,11 +1,29 @@
 package com.rulyox.mvp
 
-class MainPresenter: Contract.Presenter {
+import com.rulyox.mvp.memo.Memo
+import com.rulyox.mvp.memo.MemoStore
 
-    private var view: Contract.View? = null
+class MainPresenter: MainContract.Presenter {
 
-    override fun setView(view: Contract.View) {
+    private var view: MainContract.View? = null
+
+    override fun setView(view: MainContract.View) {
+
         this.view = view
+
+    }
+
+    override fun addItem(memo: Memo) {
+
+        MemoStore.add(memo)
+
+    }
+
+    override fun loadList() {
+
+        view?.setList(MemoStore.getList())
+        view?.updateView()
+
     }
 
 }
