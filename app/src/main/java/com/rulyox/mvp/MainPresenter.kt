@@ -19,6 +19,12 @@ class MainPresenter: MainContract.Presenter {
 
     }
 
+    override fun deleteItem(position: Int) {
+
+        MemoStore.delete(position)
+
+    }
+
     override fun loadList() {
 
         view?.setList(MemoStore.getList())

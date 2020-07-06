@@ -18,6 +18,8 @@ interface MainContract {
 
         fun addItem(memo: Memo)
 
+        fun deleteItem(position: Int)
+
         fun loadList()
 
     }

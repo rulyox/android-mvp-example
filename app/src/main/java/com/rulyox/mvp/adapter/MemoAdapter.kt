@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.rulyox.mvp.R
+import com.rulyox.mvp.activity.MainActivity
 import com.rulyox.mvp.memo.Memo
 
 class MemoAdapter: RecyclerView.Adapter<MemoAdapter.MemoViewHolder>() {
@@ -26,6 +28,32 @@ class MemoAdapter: RecyclerView.Adapter<MemoAdapter.MemoViewHolder>() {
         private val parent: LinearLayout = view.findViewById(R.id.item_parent)
         val title: TextView = view.findViewById(R.id.item_title)
         val text: TextView = view.findViewById(R.id.item_text)
+
+        init {
+
+            parent.setOnClickListener {
+
+                AlertDialog.Builder(view.context)
+                    .setTitle(R.string.dialog_delete_memo)
+                    .setMessage(R.string.dialog_delete_text)
+                    .setPositiveButton(R.string.dialog_delete) { dialog, _ ->
+
+                        MainActivity.presenter.deleteItem(adapterPosition)
+                        MainActivity.presenter.loadList()
+
+                        dialog.dismiss()
+
+                    }
+                    .setNegativeButton(R.string.dialog_cancel) { dialog, _ ->
+
+                        dialog.dismiss()
+
+                    }
+                    .show()
+
+            }
+
+        }
 
     }
 
