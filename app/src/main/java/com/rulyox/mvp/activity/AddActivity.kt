@@ -1,6 +1,7 @@
 package com.rulyox.mvp.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import com.rulyox.mvp.R
 import com.rulyox.mvp.memo.Memo
@@ -26,9 +27,9 @@ class AddActivity: Activity() {
 
             // add memo
             val memo = Memo(MemoStore.getNewId(), title, text)
-            MainActivity.presenter.addItem(memo)
-            MainActivity.presenter.loadList()
+            MemoStore.add(memo)
 
+            setResult(RESULT_OK, Intent())
             finish()
 
         }
