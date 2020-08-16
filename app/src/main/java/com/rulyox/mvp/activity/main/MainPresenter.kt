@@ -1,6 +1,5 @@
-package com.rulyox.mvp
+package com.rulyox.mvp.activity.main
 
-import com.rulyox.mvp.memo.Memo
 import com.rulyox.mvp.memo.MemoStore
 
 class MainPresenter: MainContract.Presenter {
@@ -10,12 +9,6 @@ class MainPresenter: MainContract.Presenter {
     override fun setView(view: MainContract.View) {
 
         this.view = view
-
-    }
-
-    override fun addItem(memo: Memo) {
-
-        MemoStore.add(memo)
 
     }
 

@@ -1,4 +1,4 @@
-package com.rulyox.mvp.activity
+package com.rulyox.mvp.activity.main
 
 import android.app.Activity
 import android.content.Intent
@@ -8,9 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rulyox.mvp.MainContract
-import com.rulyox.mvp.MainPresenter
 import com.rulyox.mvp.R
+import com.rulyox.mvp.activity.add.AddActivity
 import com.rulyox.mvp.adapter.MemoAdapter
 import com.rulyox.mvp.memo.Memo
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,7 +20,7 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         private const val RESULT_ADD = 1
     }
 
-    private val presenter: MainContract.Presenter = MainPresenter()
+    private val presenter = MainPresenter()
     private lateinit var memoAdapter: MemoAdapter
     private var memoList: ArrayList<Memo>? = null
 

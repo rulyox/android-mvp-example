@@ -1,4 +1,4 @@
-package com.rulyox.mvp
+package com.rulyox.mvp.activity.main
 
 import com.rulyox.mvp.memo.Memo
 
@@ -15,8 +15,6 @@ interface MainContract {
     interface Presenter {
 
         fun setView(view: View)
-
-        fun addItem(memo: Memo)
 
         fun deleteItem(position: Int)
 

@@ -1,4 +1,4 @@
-package com.rulyox.mvp.activity
+package com.rulyox.mvp.activity.add
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,9 @@ import com.rulyox.mvp.memo.Memo
 import com.rulyox.mvp.memo.MemoStore
 import kotlinx.android.synthetic.main.dialog.*
 
-class AddActivity: Activity() {
+class AddActivity: Activity(), AddContract.View {
+
+    private val presenter = AddPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +22,9 @@ class AddActivity: Activity() {
 
     private fun initUI() {
 
+        // presenter
+        presenter.setView(this)
+
         dialog_ok.setOnClickListener {
 
             val title: String = dialog_title.text.toString()
@@ -27,7 +32,7 @@ class AddActivity: Activity() {
 
             // add memo
             val memo = Memo(MemoStore.getNewId(), title, text)
-            MemoStore.add(memo)
+            presenter.addItem(memo)
 
             setResult(RESULT_OK, Intent())
             finish()
